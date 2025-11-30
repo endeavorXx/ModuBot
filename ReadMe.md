@@ -1,6 +1,6 @@
 # ModuBot: Modular LLM-Driven Multi-Persona Robot Framework
 
-# Demo Videos available here - [https://drive.google.com/drive/folders/1twl8kwDbZtGfJ08aRuGSaHqhQLsAZuMV?usp=sharing](Videos)
+**Demo Videos:** [Watch demo videos on Google Drive](https://drive.google.com/drive/folders/1twl8kwDbZtGfJ08aRuGSaHqhQLsAZuMV?usp=sharing)
 
 <p align="center">
   <img src="https://img.shields.io/badge/ROS2-Humble-blue" alt="ROS2 Humble"/>
