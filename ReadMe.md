@@ -1,5 +1,7 @@
 # ModuBot: Modular LLM-Driven Multi-Persona Robot Framework
 
+# Demo Videos available here - [https://drive.google.com/drive/folders/1twl8kwDbZtGfJ08aRuGSaHqhQLsAZuMV?usp=sharing](Videos)
+
 <p align="center">
   <img src="https://img.shields.io/badge/ROS2-Humble-blue" alt="ROS2 Humble"/>
   <img src="https://img.shields.io/badge/Simulator-Webots-green" alt="Webots"/>
@@ -28,16 +30,16 @@ A **modular, extensible ROS 2 framework** for controlling humanoid robots with *
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                              ROBOT BRAIN                                    │
 │                                                                             │
-│  ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌──────────────┐             │
-│  │   VAD   │───▶│   STT   │───▶│   LLM   │───▶│ ActionSelect │             │
-│  │ (Silero)│    │ (Riva)  │    │ (Llama) │    │ (Embeddings) │             │
-│  └─────────┘    └─────────┘    └─────────┘    └──────┬───────┘             │
+│  ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌──────────────┐              │
+│  │   VAD   │───▶│   STT   │───▶│   LLM   │───▶│ ActionSelect │              │
+│  │ (Silero)│    │ (Riva)  │    │ (Llama) │    │ (Embeddings) │              │
+│  └─────────┘    └─────────┘    └─────────┘    └──────┬───────┘              │
 │       ▲                              │               │                      │
 │       │                              ▼               ▼                      │
-│   [Microphone]                 ┌─────────┐    ┌─────────────┐              │
-│                                │   TTS   │    │  Publish to │              │
+│   [Microphone]                 ┌─────────┐    ┌─────────────--┐             │
+│                                │   TTS   │    │  Publish to   │             │
 │                                │ (Riva)  │    │/perform_action│             │
-│                                └────┬────┘    └──────┬──────┘              │
+│                                └────┬────┘    └──────┬──────---             │
 │                                     │                │                      │
 │                                     ▼                │                      │
 │                               [Speaker]              │                      │
