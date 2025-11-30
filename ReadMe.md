@@ -194,8 +194,8 @@ The framework is designed for rapid adaptation and extension:
 
 For detailed setup, configuration, and usage instructions, refer to the robot-specific documentation:
 
-- **[NAO Robot Controller Documentation](./my_nao_controller/docs/README.md)**
-- **[Robotis OP2 Controller Documentation](./op2_controller/docs/README.md)**
+- **[NAO Robot Controller Documentation](./src/my_nao_controller/docs/README.md)**
+- **[Robotis OP2 Controller Documentation](./src/op2_controller/docs/README.md)**
 
 ---
 
