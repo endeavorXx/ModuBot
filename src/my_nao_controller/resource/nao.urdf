@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<robot name="Nao">
+    <webots>
+        <plugin type="my_nao_controller.nao_driver.NaoDriver" />
+    </webots>
+</robot>

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1000" width="1400" height="1000">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="brainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="driverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#11998e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#38ef7d;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="externalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffa502;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="configGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="vocabGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fa709a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fee140;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Drop Shadow -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="3" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.2"/>
+    </filter>
+    
+    <!-- Arrow Marker -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+    <marker id="arrowheadRed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c"/>
+    </marker>
+    <marker id="arrowheadGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#27ae60"/>
+    </marker>
+    <marker id="arrowheadBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3498db"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1400" height="1000" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="700" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#2c3e50">
+    ModuBot Controller Architecture — UML Component Diagram
+  </text>
+  <text x="700" y="75" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#7f8c8d">
+    NAO Robot LLM-Powered Persona-Aware Controller (ROS 2 + Webots)
+  </text>
+
+  <!-- ==================== EXTERNAL SERVICES (Top) ==================== -->
+  <g transform="translate(50, 100)">
+    <rect x="0" y="0" width="300" height="120" rx="12" fill="url(#externalGrad)" filter="url(#shadow)"/>
+    <text x="150" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">
+      «External Services»
+    </text>
+    <text x="150" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="white">NVIDIA Riva (STT/TTS)</text>
+    <text x="150" y="75" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="white">NVIDIA NIM (Llama LLM)</text>
+    <text x="150" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="white">Silero VAD</text>
+  </g>
+
+  <!-- ==================== NAO BRAIN CLASS (Main) ==================== -->
+  <g transform="translate(400, 130)">
+    <rect x="0" y="0" width="600" height="340" rx="12" fill="url(#brainGrad)" filter="url(#shadow)"/>
+    
+    <!-- Class Header -->
+    <rect x="0" y="0" width="600" height="50" rx="12" fill="rgba(0,0,0,0.2)"/>
+    <text x="300" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">«ROS 2 Node»</text>
+    <text x="300" y="42" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">NaoBrain</text>
+    
+    <!-- Attributes Section -->
+    <line x1="0" y1="55" x2="600" y2="55" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <text x="20" y="80" font-family="monospace" font-size="12" fill="white">- publisher_: Publisher&lt;String&gt;</text>
+    <text x="20" y="100" font-family="monospace" font-size="12" fill="white">- conversation_history: List[Dict]</text>
+    <text x="20" y="120" font-family="monospace" font-size="12" fill="white">- persona: Dict</text>
+    <text x="20" y="140" font-family="monospace" font-size="12" fill="white">- selector: ActionSelector</text>
+    <text x="20" y="160" font-family="monospace" font-size="12" fill="white">- vad_model: SileroVAD</text>
+    
+    <!-- Methods Section -->
+    <line x1="0" y1="175" x2="600" y2="175" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <text x="20" y="200" font-family="monospace" font-size="12" fill="white">+ __init__(persona_id: str)</text>
+    <text x="20" y="220" font-family="monospace" font-size="12" fill="white">+ run_conversation_loop()</text>
+    <text x="20" y="240" font-family="monospace" font-size="12" fill="white">+ record_audio() → np.ndarray</text>
+    <text x="20" y="260" font-family="monospace" font-size="12" fill="white">+ transcribe_audio(audio) → str</text>
+    <text x="20" y="280" font-family="monospace" font-size="12" fill="white">+ generate_response(text) → (intent, speech)</text>
+    <text x="20" y="300" font-family="monospace" font-size="12" fill="white">+ speak_and_act(speech, intent)</text>
+    <text x="20" y="320" font-family="monospace" font-size="12" fill="white">+ publish_action(action_name: str)</text>
+  </g>
+
+  <!-- ==================== ACTION SELECTOR CLASS ==================== -->
+  <g transform="translate(1050, 130)">
+    <rect x="0" y="0" width="300" height="200" rx="12" fill="url(#vocabGrad)" filter="url(#shadow)"/>
+    
+    <!-- Class Header -->
+    <rect x="0" y="0" width="300" height="50" rx="12" fill="rgba(0,0,0,0.2)"/>
+    <text x="150" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.9)">«Semantic Search»</text>
+    <text x="150" y="42" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">ActionSelector</text>
+    
+    <!-- Attributes -->
+    <line x1="0" y1="55" x2="300" y2="55" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <text x="15" y="80" font-family="monospace" font-size="11" fill="white">- model: SentenceTransformer</text>
+    <text x="15" y="100" font-family="monospace" font-size="11" fill="white">- keys: List[str]</text>
+    <text x="15" y="120" font-family="monospace" font-size="11" fill="white">- db_embeddings: np.ndarray</text>
+    
+    <!-- Methods -->
+    <line x1="0" y1="135" x2="300" y2="135" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <text x="15" y="160" font-family="monospace" font-size="11" fill="white">+ __init__()</text>
+    <text x="15" y="180" font-family="monospace" font-size="11" fill="white">+ search(query) → str</text>
+  </g>
+
+  <!-- ==================== CONFIG MODULE ==================== -->
+  <g transform="translate(50, 260)">
+    <rect x="0" y="0" width="300" height="160" rx="12" fill="url(#configGrad)" filter="url(#shadow)"/>
+    
+    <rect x="0" y="0" width="300" height="45" rx="12" fill="rgba(0,0,0,0.2)"/>
+    <text x="150" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">«Module»</text>
+    <text x="150" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">config.py</text>
+    
+    <line x1="0" y1="50" x2="300" y2="50" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <text x="15" y="75" font-family="monospace" font-size="11" fill="white">NVIDIA_API_KEY</text>
+    <text x="15" y="93" font-family="monospace" font-size="11" fill="white">CURRENT_PERSONA_ID</text>
+    <text x="15" y="111" font-family="monospace" font-size="11" fill="white">EMBEDDING_FILE</text>
+    <text x="15" y="129" font-family="monospace" font-size="11" fill="white">SAMPLE_RATE, VAD_*</text>
+    <text x="15" y="147" font-family="monospace" font-size="11" fill="white">TTS_*, STT_* settings</text>
+  </g>
+
+  <!-- ==================== PERSONAS MODULE ==================== -->
+  <g transform="translate(50, 460)">
+    <rect x="0" y="0" width="300" height="140" rx="12" fill="#9b59b6" filter="url(#shadow)"/>
+    
+    <rect x="0" y="0" width="300" height="45" rx="12" fill="rgba(0,0,0,0.2)"/>
+    <text x="150" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">«Module»</text>
+    <text x="150" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">personas.py</text>
+    
+    <line x1="0" y1="50" x2="300" y2="50" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <text x="15" y="75" font-family="monospace" font-size="11" fill="white">PERSONAS: Dict</text>
+    <text x="25" y="95" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.8)">├─ polite_teacher</text>
+    <text x="25" y="112" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.8)">├─ polite_receptionist</text>
+    <text x="25" y="129" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.8)">└─ angry_cab_driver</text>
+  </g>
+
+  <!-- ==================== ROS 2 TOPIC ==================== -->
+  <g transform="translate(550, 510)">
+    <rect x="0" y="0" width="300" height="70" rx="35" fill="#2c3e50" filter="url(#shadow)"/>
+    <text x="150" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#bdc3c7">ROS 2 Topic</text>
+    <text x="150" y="52" text-anchor="middle" font-family="monospace" font-size="14" font-weight="bold" fill="#3498db">/perform_action</text>
+  </g>
+
+  <!-- ==================== NAO DRIVER CLASS ==================== -->
+  <g transform="translate(400, 620)">
+    <rect x="0" y="0" width="600" height="280" rx="12" fill="url(#driverGrad)" filter="url(#shadow)"/>
+    
+    <!-- Class Header -->
+    <rect x="0" y="0" width="600" height="50" rx="12" fill="rgba(0,0,0,0.2)"/>
+    <text x="300" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">«Webots Controller»</text>
+    <text x="300" y="42" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">NaoDriver</text>
+    
+    <!-- Attributes -->
+    <line x1="0" y1="55" x2="600" y2="55" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <text x="20" y="80" font-family="monospace" font-size="12" fill="white">- motors: Dict[str, Motor]</text>
+    <text x="20" y="100" font-family="monospace" font-size="12" fill="white">- current_animation: Dict | None</text>
+    <text x="20" y="120" font-family="monospace" font-size="12" fill="white">- anim_start_time: float</text>
+    <text x="20" y="140" font-family="monospace" font-size="12" fill="white">- ros_node: Node</text>
+    
+    <!-- Methods -->
+    <line x1="0" y1="155" x2="600" y2="155" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <text x="20" y="180" font-family="monospace" font-size="12" fill="white">+ init(webots_node, properties)</text>
+    <text x="20" y="200" font-family="monospace" font-size="12" fill="white">+ action_callback(msg: String)</text>
+    <text x="20" y="220" font-family="monospace" font-size="12" fill="white">+ start_animation(name: str)</text>
+    <text x="20" y="240" font-family="monospace" font-size="12" fill="white">+ step()  # Called every timestep</text>
+    <text x="20" y="260" font-family="monospace" font-size="12" fill="white">+ update_animation(t: float)</text>
+  </g>
+
+  <!-- ==================== ACTION VOCAB MODULE ==================== -->
+  <g transform="translate(1050, 620)">
+    <rect x="0" y="0" width="300" height="180" rx="12" fill="#e67e22" filter="url(#shadow)"/>
+    
+    <rect x="0" y="0" width="300" height="45" rx="12" fill="rgba(0,0,0,0.2)"/>
+    <text x="150" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">«Module»</text>
+    <text x="150" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">nao_action_vocab.py</text>
+    
+    <line x1="0" y1="50" x2="300" y2="50" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <text x="15" y="75" font-family="monospace" font-size="11" fill="white">NAO_ACTIONS: Dict</text>
+    <text x="15" y="95" font-family="monospace" font-size="11" fill="white">NAO_COMPLEX_ACTIONS: Dict</text>
+    <text x="25" y="115" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.8)">├─ stand_neutral</text>
+    <text x="25" y="132" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.8)">├─ wave_right_hand</text>
+    <text x="25" y="149" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.8)">├─ shake_head, nod_head</text>
+    <text x="25" y="166" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.8)">└─ get_out_*, explain_*</text>
+  </g>
+
+  <!-- ==================== WEBOTS SIMULATOR ==================== -->
+  <g transform="translate(1050, 840)">
+    <rect x="0" y="0" width="300" height="100" rx="12" fill="#34495e" filter="url(#shadow)"/>
+    <text x="150" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#95a5a6">«Simulator»</text>
+    <text x="150" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">Webots</text>
+    <text x="150" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#bdc3c7">NAO Robot Motors</text>
+  </g>
+
+  <!-- ==================== USER I/O ==================== -->
+  <g transform="translate(50, 640)">
+    <rect x="0" y="0" width="300" height="100" rx="12" fill="#1abc9c" filter="url(#shadow)"/>
+    <text x="150" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">«Hardware I/O»</text>
+    <text x="150" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">User Interface</text>
+    <text x="150" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.9)">🎤 Microphone   🔊 Speaker</text>
+  </g>
+
+  <!-- ==================== CONNECTIONS ==================== -->
+  
+  <!-- External Services to NaoBrain -->
+  <path d="M 200 220 L 200 280 L 400 280" fill="none" stroke="#555" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#arrowhead)"/>
+  <text x="220" y="250" font-family="Arial, sans-serif" font-size="10" fill="#555">API calls</text>
+
+  <!-- Config to NaoBrain -->
+  <path d="M 350 340 L 400 340" fill="none" stroke="#3498db" stroke-width="2" marker-end="url(#arrowheadBlue)"/>
+  <text x="355" y="332" font-family="Arial, sans-serif" font-size="10" fill="#3498db">imports</text>
+
+  <!-- Personas to NaoBrain -->
+  <path d="M 350 530 L 420 530 L 420 470" fill="none" stroke="#9b59b6" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="355" y="522" font-family="Arial, sans-serif" font-size="10" fill="#9b59b6">loads persona</text>
+
+  <!-- NaoBrain to ActionSelector (composition) -->
+  <path d="M 1000 250 L 1050 250" fill="none" stroke="#fff" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="1005" y="242" font-family="Arial, sans-serif" font-size="10" fill="#555">has-a</text>
+  <rect x="995" y="245" width="10" height="10" fill="#764ba2" stroke="#fff" stroke-width="1" transform="rotate(45, 1000, 250)"/>
+
+  <!-- NaoBrain publishes to ROS Topic -->
+  <path d="M 700 470 L 700 510" fill="none" stroke="#e74c3c" stroke-width="2.5" marker-end="url(#arrowheadRed)"/>
+  <text x="710" y="495" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#e74c3c">publishes</text>
+
+  <!-- ROS Topic to NaoDriver -->
+  <path d="M 700 580 L 700 620" fill="none" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowheadGreen)"/>
+  <text x="710" y="605" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#27ae60">subscribes</text>
+
+  <!-- NaoDriver uses ActionVocab -->
+  <path d="M 1000 760 L 1050 760" fill="none" stroke="#e67e22" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="1005" y="752" font-family="Arial, sans-serif" font-size="10" fill="#e67e22">imports</text>
+
+  <!-- NaoDriver to Webots -->
+  <path d="M 1200 800 L 1200 840" fill="none" stroke="#555" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="1210" y="825" font-family="Arial, sans-serif" font-size="10" fill="#555">controls</text>
+
+  <!-- User I/O to NaoBrain -->
+  <path d="M 200 640 L 200 550 L 400 300" fill="none" stroke="#1abc9c" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="130" y="570" font-family="Arial, sans-serif" font-size="10" fill="#1abc9c">audio input</text>
+  
+  <path d="M 400 380 L 280 550 L 280 640" fill="none" stroke="#1abc9c" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrowhead)"/>
+  <text x="260" y="530" font-family="Arial, sans-serif" font-size="10" fill="#1abc9c">audio output</text>
+
+  <!-- ==================== LEGEND ==================== -->
+  <g transform="translate(50, 800)">
+    <rect x="0" y="0" width="300" height="140" rx="8" fill="white" stroke="#ddd" stroke-width="1"/>
+    <text x="150" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">Legend</text>
+    
+    <rect x="15" y="40" width="20" height="14" rx="3" fill="url(#brainGrad)"/>
+    <text x="45" y="52" font-family="Arial, sans-serif" font-size="11" fill="#555">AI Pipeline (NaoBrain)</text>
+    
+    <rect x="15" y="60" width="20" height="14" rx="3" fill="url(#driverGrad)"/>
+    <text x="45" y="72" font-family="Arial, sans-serif" font-size="11" fill="#555">Animation Engine (NaoDriver)</text>
+    
+    <rect x="15" y="80" width="20" height="14" rx="3" fill="url(#externalGrad)"/>
+    <text x="45" y="92" font-family="Arial, sans-serif" font-size="11" fill="#555">External Services (NVIDIA)</text>
+    
+    <line x1="15" y1="110" x2="35" y2="110" stroke="#e74c3c" stroke-width="2.5"/>
+    <text x="45" y="114" font-family="Arial, sans-serif" font-size="11" fill="#555">ROS 2 Publish</text>
+    
+    <line x1="160" y1="110" x2="180" y2="110" stroke="#27ae60" stroke-width="2.5"/>
+    <text x="190" y="114" font-family="Arial, sans-serif" font-size="11" fill="#555">ROS 2 Subscribe</text>
+    
+    <line x1="160" y1="50" x2="180" y2="50" stroke="#555" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="190" y="54" font-family="Arial, sans-serif" font-size="11" fill="#555">API / Data flow</text>
+  </g>
+
+  <!-- Data Flow Summary Box -->
+  <g transform="translate(400, 920)">
+    <rect x="0" y="0" width="600" height="60" rx="8" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1"/>
+    <text x="300" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2c3e50">Data Flow</text>
+    <text x="300" y="45" text-anchor="middle" font-family="monospace" font-size="11" fill="#7f8c8d">
+      🎤 Audio → VAD → STT → LLM → ActionSelector → TTS + /perform_action → Motors
+    </text>
+  </g>
+
+</svg>

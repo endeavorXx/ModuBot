@@ -1,0 +1,21 @@
+"get_out_right_hand": {
+        "duration": 4.0,
+        "repetitions": 1,
+        "curves": [
+            
+            # 1. Arm moves UP/FORWARD (1.5 -> 0.0 -> 1.5)
+            # We use 'start_from_max' because the arm starts Down (1.5)
+            { "joint": "RShoulderPitch", "min": 0.0, "max": 1.5, "start_from_max": True },
+            # 2. Arm moves OUT (0.0 -> 1.2 -> 0.0)
+            { "joint": "RShoulderRoll", "min": -1.3, "max": 0, "start_from_max": True },
+            # 3. Fingers OPEN (0.0 -> 1.0 -> 0.0)
+            { "joint": "RPhalanx4", "min": 0.0, "max": 1.0 },
+            { "joint": "RPhalanx5", "min": 0.0, "max": 1.0 },
+            { "joint": "RPhalanx6", "min": 0.0, "max": 1.0 },
+        ]
+    }
+
+
+"numpy < 2" sth like that is used while installing dependencies 
+
+make COLCON_IGNORE inside python-clients

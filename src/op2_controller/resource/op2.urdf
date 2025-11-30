@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<robot name="RobotisOp2">
+    <webots>
+        <plugin type="op2_controller.op2_driver.Op2Driver" />
+    </webots>
+</robot>

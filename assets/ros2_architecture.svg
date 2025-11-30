@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1000" width="1400" height="1000">
+  <defs>
+    <linearGradient id="brainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+    <linearGradient id="driverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#11998e"/>
+      <stop offset="100%" style="stop-color:#38ef7d"/>
+    </linearGradient>
+    <linearGradient id="topicGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b6b"/>
+      <stop offset="100%" style="stop-color:#ffa502"/>
+    </linearGradient>
+    <linearGradient id="webotsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="4" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.1"/>
+    </filter>
+    
+    <marker id="arrowRed" markerWidth="14" markerHeight="10" refX="12" refY="5" orient="auto">
+      <polygon points="0 0, 14 5, 0 10" fill="#e74c3c"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="14" markerHeight="10" refX="12" refY="5" orient="auto">
+      <polygon points="0 0, 14 5, 0 10" fill="#27ae60"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="14" markerHeight="10" refX="12" refY="5" orient="auto">
+      <polygon points="0 0, 14 5, 0 10" fill="#3498db"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1400" height="1000" fill="#f5f7fa"/>
+
+  <!-- Title -->
+  <text x="700" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#2c3e50">
+    ROS 2 Node Architecture
+  </text>
+  <text x="700" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#7f8c8d">
+    ModuBot NAO Controller — Publish / Subscribe Communication
+  </text>
+
+
+
+  <!-- ==================== NAO BRAIN NODE (Left) ==================== -->
+  <g transform="translate(100, 180)">
+    <rect x="0" y="0" width="420" height="320" rx="25" fill="url(#brainGrad)" filter="url(#shadow)"/>
+    
+    <!-- Header -->
+    <text x="210" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.7)">
+      «ROS 2 Node»
+    </text>
+    <text x="210" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white">
+      nao_brain_node
+    </text>
+    
+    <line x1="40" y1="105" x2="380" y2="105" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    
+    <!-- Content -->
+    <text x="50" y="145" font-family="Arial, sans-serif" font-size="16" fill="white">• Voice Activity Detection</text>
+    <text x="50" y="180" font-family="Arial, sans-serif" font-size="16" fill="white">• Speech-to-Text (STT)</text>
+    <text x="50" y="215" font-family="Arial, sans-serif" font-size="16" fill="white">• LLM Response Generation</text>
+    <text x="50" y="250" font-family="Arial, sans-serif" font-size="16" fill="white">• Semantic Action Selection</text>
+    
+    <!-- Publisher Badge -->
+    <rect x="50" y="275" width="130" height="32" rx="16" fill="#e74c3c"/>
+    <text x="115" y="297" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">PUBLISHER</text>
+  </g>
+
+
+
+  <!-- ==================== TOPIC (Center) ==================== -->
+  <g transform="translate(600, 280)">
+    <ellipse cx="100" cy="60" rx="160" ry="70" fill="url(#topicGrad)" filter="url(#shadow)"/>
+    
+    <text x="100" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.9)">
+      Topic
+    </text>
+    <text x="100" y="80" text-anchor="middle" font-family="monospace" font-size="20" font-weight="bold" fill="white">
+      /perform_action
+    </text>
+    
+    <rect x="20" y="100" width="160" height="26" rx="13" fill="rgba(0,0,0,0.2)"/>
+    <text x="100" y="118" text-anchor="middle" font-family="monospace" font-size="12" fill="white">std_msgs/String</text>
+  </g>
+
+
+
+  <!-- ==================== NAO DRIVER NODE (Right) ==================== -->
+  <g transform="translate(880, 180)">
+    <rect x="0" y="0" width="420" height="320" rx="25" fill="url(#driverGrad)" filter="url(#shadow)"/>
+    
+    <!-- Header -->
+    <text x="210" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.7)">
+      «ROS 2 Node»
+    </text>
+    <text x="210" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white">
+      nao_driver_node
+    </text>
+    
+    <line x1="40" y1="105" x2="380" y2="105" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    
+    <!-- Content -->
+    <text x="50" y="145" font-family="Arial, sans-serif" font-size="16" fill="white">• Receive action commands</text>
+    <text x="50" y="180" font-family="Arial, sans-serif" font-size="16" fill="white">• Execute static poses</text>
+    <text x="50" y="215" font-family="Arial, sans-serif" font-size="16" fill="white">• Run complex animations</text>
+    <text x="50" y="250" font-family="Arial, sans-serif" font-size="16" fill="white">• Motor position control</text>
+    
+    <!-- Subscriber Badge -->
+    <rect x="240" y="275" width="130" height="32" rx="16" fill="#27ae60"/>
+    <text x="305" y="297" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">SUBSCRIBER</text>
+  </g>
+
+
+
+  <!-- ==================== WEBOTS (Bottom Right) ==================== -->
+  <g transform="translate(880, 580)">
+    <rect x="0" y="0" width="420" height="140" rx="20" fill="url(#webotsGrad)" filter="url(#shadow)"/>
+    
+    <text x="210" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.8)">
+      «Simulator»
+    </text>
+    <text x="210" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="white">
+      Webots
+    </text>
+    <text x="210" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.9)">
+      webots_ros2_driver  •  NAO Motors
+    </text>
+  </g>
+
+
+
+  <!-- ==================== MESSAGE EXAMPLES (Bottom Left) ==================== -->
+  <g transform="translate(100, 580)">
+    <rect x="0" y="0" width="420" height="140" rx="20" fill="white" stroke="#e0e0e0" stroke-width="2" filter="url(#shadow)"/>
+    
+    <text x="210" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2c3e50">
+      Message Payloads
+    </text>
+    
+    <line x1="40" y1="55" x2="380" y2="55" stroke="#eee" stroke-width="1"/>
+    
+    <text x="50" y="85" font-family="monospace" font-size="15" fill="#555">data: "wave_right_hand"</text>
+    <text x="50" y="110" font-family="monospace" font-size="15" fill="#555">data: "nod_head"</text>
+    <text x="50" y="135" font-family="monospace" font-size="15" fill="#555">data: "stand_neutral"</text>
+  </g>
+
+
+
+  <!-- ==================== ARROWS ==================== -->
+  
+  <!-- Brain → Topic -->
+  <line x1="520" y1="340" x2="600" y2="340" stroke="#e74c3c" stroke-width="5" marker-end="url(#arrowRed)"/>
+  <rect x="530" y="295" width="90" height="30" rx="15" fill="#e74c3c"/>
+  <text x="575" y="316" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="white">publish()</text>
+
+  <!-- Topic → Driver -->
+  <line x1="800" y1="340" x2="880" y2="340" stroke="#27ae60" stroke-width="5" marker-end="url(#arrowGreen)"/>
+  <rect x="780" y="295" width="100" height="30" rx="15" fill="#27ae60"/>
+  <text x="830" y="316" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="white">subscribe()</text>
+
+  <!-- Driver → Webots -->
+  <line x1="1090" y1="500" x2="1090" y2="580" stroke="#3498db" stroke-width="4" marker-end="url(#arrowBlue)"/>
+  <text x="1120" y="545" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#3498db">controls</text>
+
+
+
+  <!-- ==================== LEGEND ==================== -->
+  <g transform="translate(100, 780)">
+    <rect x="0" y="0" width="1200" height="80" rx="15" fill="white" stroke="#e0e0e0" stroke-width="1"/>
+    
+    <text x="600" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2c3e50">Legend</text>
+    
+    <!-- Items -->
+    <rect x="80" y="50" width="35" height="20" rx="6" fill="url(#brainGrad)"/>
+    <text x="130" y="65" font-family="Arial, sans-serif" font-size="14" fill="#555">ROS 2 Node</text>
+    
+    <ellipse cx="310" cy="60" rx="30" ry="15" fill="url(#topicGrad)"/>
+    <text x="360" y="65" font-family="Arial, sans-serif" font-size="14" fill="#555">Topic</text>
+    
+    <line x1="480" y1="60" x2="530" y2="60" stroke="#e74c3c" stroke-width="4" marker-end="url(#arrowRed)"/>
+    <text x="550" y="65" font-family="Arial, sans-serif" font-size="14" fill="#555">Publish</text>
+    
+    <line x1="670" y1="60" x2="720" y2="60" stroke="#27ae60" stroke-width="4" marker-end="url(#arrowGreen)"/>
+    <text x="740" y="65" font-family="Arial, sans-serif" font-size="14" fill="#555">Subscribe</text>
+    
+    <rect x="870" y="50" width="35" height="20" rx="6" fill="url(#webotsGrad)"/>
+    <text x="920" y="65" font-family="Arial, sans-serif" font-size="14" fill="#555">Simulator</text>
+    
+    <line x1="1040" y1="60" x2="1090" y2="60" stroke="#3498db" stroke-width="3" marker-end="url(#arrowBlue)"/>
+    <text x="1110" y="65" font-family="Arial, sans-serif" font-size="14" fill="#555">Control</text>
+  </g>
+
+
+
+  <!-- ==================== COMMANDS ==================== -->
+  <g transform="translate(100, 900)">
+    <rect x="0" y="0" width="580" height="40" rx="8" fill="#2c3e50"/>
+    <text x="20" y="27" font-family="monospace" font-size="14" fill="#1abc9c">$ ros2 launch my_nao_controller robot_launch.py</text>
+  </g>
+  
+  <g transform="translate(720, 900)">
+    <rect x="0" y="0" width="580" height="40" rx="8" fill="#2c3e50"/>
+    <text x="20" y="27" font-family="monospace" font-size="14" fill="#1abc9c">$ ros2 topic echo /perform_action</text>
+  </g>
+
+</svg>
